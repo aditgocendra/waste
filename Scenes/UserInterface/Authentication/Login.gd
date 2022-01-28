@@ -2,8 +2,8 @@ extends Control
 
 
 func _ready():
-	Firebase.Auth.connect("login_succeeded", self, "on_FirebaseLoginSuccess")
-	Firebase.Auth.connect("login_failed", self, "on_FirebaseLoginFailed")
+	Firebase.Auth.connect("login_succeeded", self, "_on_LoginSuccess")
+	Firebase.Auth.connect("login_failed", self, "_on_LoginFailed")
 
 
 func _on_Button_pressed():
@@ -12,9 +12,9 @@ func _on_Button_pressed():
 	
 	Firebase.Auth.login_with_email_and_password(email, password)
 
-func on_FirebaseLoginSuccess(auth):
+func _on_LoginSuccess(user : Dictionary):
 	print("Success")
 	
-func on_FirebaseLoginFailed(error_code, message):
+func _on_LoginFailed(error_code, message):
 	print(error_code)
 	print(message)
