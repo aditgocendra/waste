@@ -1,28 +1,64 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/Logo/ninja_rusher.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Logo/Waste.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Font/RobotoBlack/roboto_black_14.tres" type="DynamicFont" id=2]
 
-[node name="GameIcon" type="VBoxContainer"]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.32549 )
+shadow_size = 2
+shadow_offset = Vector2( 1, 1 )
+
+[node name="GameIcon" type="MarginContainer"]
 margin_right = 128.0
 margin_bottom = 149.0
+size_flags_horizontal = 7
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="ContainerVertical" type="VBoxContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 138.0
+margin_bottom = 159.0
+
+[node name="BackgroundIcon" type="Panel" parent="ContainerVertical"]
 margin_right = 128.0
 margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="Icon" type="TextureRect" parent="ContainerVertical/BackgroundIcon"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 4
 texture = ExtResource( 1 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Name" type="Label" parent="."]
+[node name="Name" type="Label" parent="ContainerVertical"]
 margin_top = 132.0
 margin_right = 128.0
 margin_bottom = 149.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Ninja Rusher"
+text = "Waste"
 align = 1
