@@ -1,51 +1,122 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Font/RobotoBlack/roboto_black_18.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/UserInterface/Authentication/Login.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Font/RobotoBlack/roboto_black_16.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color( 0, 0, 0, 0.282353 )
+shadow_size = 2
+shadow_offset = Vector2( 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.898039, 0.898039, 0.921569, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.898039, 0.898039, 0.921569, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.243137, 0.341176, 0.482353, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.054902, 0.156863, 0.309804, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.121569, 0.231373, 0.392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.290196, 0.482353, 0.690196, 1 )
 
 [node name="Login" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = -38.0
-margin_right = 126.0
-margin_bottom = 75.0
+margin_left = -196.0
+margin_top = -120.0
+margin_right = 196.0
+margin_bottom = 165.0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Email" type="LineEdit" parent="VBoxContainer"]
-margin_right = 251.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -151.5
+margin_top = -97.5
+margin_right = 151.5
+margin_bottom = 97.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Email" type="LineEdit" parent="Panel/VBoxContainer"]
+margin_right = 303.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 5 )
+align = 1
 placeholder_text = "Email"
 
-[node name="Password" type="LineEdit" parent="VBoxContainer"]
+[node name="Password" type="LineEdit" parent="Panel/VBoxContainer"]
 margin_top = 44.0
-margin_right = 251.0
+margin_right = 303.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 0, 40 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 6 )
+align = 1
 secret = true
 placeholder_text = "Password"
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Login" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 88.0
-margin_right = 251.0
+margin_right = 303.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
 text = "Login"
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 132.0
+margin_right = 303.0
+margin_bottom = 151.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "OR"
+align = 1
+
+[node name="RedirectRegist" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 155.0
+margin_right = 303.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 7 )
+text = "Register"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Login" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/RedirectRegist" to="." method="_on_RedirectRegist_pressed"]
